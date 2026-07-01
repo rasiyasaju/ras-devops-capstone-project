@@ -2,21 +2,26 @@ pipeline {
     agent any
 
     stages {
+
         stage('Build') {
             steps {
-                echo 'Building the application...'
+                echo 'Building application...'
+                sh 'docker build -t website-app .'
             }
         }
 
         stage('Test') {
             steps {
-                echo 'Running tests...'
+                echo 'Testing application...'
             }
         }
 
-        stage('Deploy') {
+        stage('Deploy to Production') {
+            when {
+                branch 'master'
+            }
             steps {
-                echo 'Deploying the application...'
+                echo 'Deploying to Production...'
             }
         }
     }
