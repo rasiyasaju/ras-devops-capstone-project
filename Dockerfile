@@ -2,7 +2,7 @@ FROM ubuntu
 
 RUN apt update && apt install apache2 -y
 
-COPY website/ /var/www/html/
+COPY website/index.html /var/www/html/index.html
 
 EXPOSE 80
 
